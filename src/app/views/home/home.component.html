@@ -1,0 +1,56 @@
+<div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center center">
+  <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="space-evenly stretch">
+    <div fxFlex="50" fxLayout="row wrap" fxLayoutAlign="space-evenly stretch">
+      <ngu-carousel #myCarousel1 [inputs]="carouselTileConfig" [dataSource]="carousel" fxFlex="100">
+        <ngu-tile *nguCarouselDef="let carousel">
+          <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center center">
+            <img fxFlex="100" src="{{carousel.imagen}}">
+          </div>
+        </ngu-tile>
+        <ul class="myPoint" NguCarouselPoint>
+          <li *ngFor="let i of myCarousel1.pointNumbers" [class.active]="i==myCarousel1.activePoint"
+            (click)="myCarousel1.moveTo(i)"></li>
+        </ul>
+      </ngu-carousel>
+    </div>
+
+    <div fxFlex="50" fxLayout="row wrap" fxLayoutAlign="space-evenly stretch">
+      <ngu-carousel #myCarousel2 [inputs]="carouselTileConfig" [dataSource]="carousel" fxFlex="100">
+        <ngu-tile *nguCarouselDef="let carousel">
+          <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center center">
+            <img fxFlex="100" src="{{carousel.imagen}}">
+          </div>
+        </ngu-tile>
+        <ul class="myPoint" NguCarouselPoint>
+          <li *ngFor="let i of myCarousel2.pointNumbers" [class.active]="i==myCarousel2.activePoint"
+            (click)="myCarousel2.moveTo(i)"></li>
+        </ul>
+      </ngu-carousel>
+    </div>
+  </div>
+
+  <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="space-evenly stretch">
+    <ngu-carousel #myCarousel3 [inputs]="carouselTileConfig" [dataSource]="carousel" fxFlex="100">
+      <ngu-tile *nguCarouselDef="let carousel; let i = index">
+        <div class="carousel">
+          <img fxFlex="100" src="{{carousel.imagen}}">
+          <div class="carousel2">
+            <ngu-carousel #myCarousel4 [inputs]="carouselTileConfig2" [dataSource]="carousel.carousel" fxFlex="50">
+              <ngu-tile *nguCarouselDef="let carousel2">
+                <img fxFlex="100" src="{{carousel2.imagen}}">
+              </ngu-tile>
+              <ul class="myPoint" NguCarouselPoint>
+                <li *ngFor="let i of myCarousel4.pointNumbers" [class.active]="i==myCarousel4.activePoint"
+                  (click)="myCarousel4.moveTo(i)"></li>
+              </ul>
+            </ngu-carousel>
+          </div>
+        </div>
+      </ngu-tile>
+      <ul class="myPoint" NguCarouselPoint>
+        <li *ngFor="let i of myCarousel3.pointNumbers" [class.active]="i==myCarousel3.activePoint"
+          (click)="myCarousel3.moveTo(i)"></li>
+      </ul>
+    </ngu-carousel>
+  </div>
+</div>
